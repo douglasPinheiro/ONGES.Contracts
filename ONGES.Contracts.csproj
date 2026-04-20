@@ -4,6 +4,10 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	<PackageId>ONGES.Contracts</PackageId>
+	<Version>1.0.0</Version>
+	<Authors>douglasdev</Authors>
+	<Company>FIAP</Company>
+	<Description>Pacote desenvolvido para atender o hackathon NETT9 da FIAP</Description>
   </PropertyGroup>
-
 </Project>
