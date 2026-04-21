@@ -1,20 +1,20 @@
 # ONGES.Contracts
 
-Pacote de contratos compartilhados entre os microsservicos do ecossistema ONGES, usado para padronizar mensagens trocadas por eventos.
+Pacote de contratos compartilhados entre os microsserviços do ecossistema ONGES, usado para padronizar mensagens trocadas por eventos.
 
 ## Objetivo
 
-Centralizar DTOs de integracao para reduzir acoplamento entre servicos e evitar divergencias de schema em mensagens publicadas/consumidas.
+Centralizar DTOs de integração para reduzir acoplamento entre serviços e evitar divergências de schema em mensagens publicadas/consumidas.
 
-## Conteudo Atual
+## Conteúdo Atual
 
 ### `ONGES.Contracts.DTOs.DonationMessage`
 
-Representa o evento de atualizacao de arrecadacao de campanha:
+Representa o evento de atualização de arrecadação de campanha:
 
 - `CampaignId` (`Guid`): identificador da campanha.
-- `Amount` (`decimal`): valor da doacao processada.
-- `DonatedAt` (`DateTime`): data/hora de processamento da doacao.
+- `Amount` (`decimal`): valor da doação processada.
+- `DonatedAt` (`DateTime`): data/hora de processamento da doação.
 
 ## Framework Alvo
 
@@ -22,7 +22,7 @@ Representa o evento de atualizacao de arrecadacao de campanha:
 
 ## Como Usar
 
-### 1. Referencia de Projeto (desenvolvimento local)
+### 1. Referência de Projeto (desenvolvimento local)
 
 ```xml
 <ItemGroup>
@@ -30,7 +30,7 @@ Representa o evento de atualizacao de arrecadacao de campanha:
 </ItemGroup>
 ```
 
-### 2. Referencia via Pacote NuGet
+### 2. Referência via Pacote NuGet
 
 ```xml
 <ItemGroup>
@@ -38,7 +38,7 @@ Representa o evento de atualizacao de arrecadacao de campanha:
 </ItemGroup>
 ```
 
-### 3. Exemplo de Publicacao da Mensagem
+### 3. Exemplo de Publicação da Mensagem
 
 ```csharp
 using ONGES.Contracts.DTOs;
@@ -64,7 +64,7 @@ public sealed class DonationConsumer : IConsumer<DonationMessage>
     public Task Consume(ConsumeContext<DonationMessage> context)
     {
         var donation = context.Message;
-        // Aplicar regra de negocio com CampaignId, Amount e DonatedAt
+        // Aplicar regra de negócio com CampaignId, Amount e DonatedAt
         return Task.CompletedTask;
     }
 }
@@ -72,11 +72,11 @@ public sealed class DonationConsumer : IConsumer<DonationMessage>
 
 ## Versionamento
 
-Recomendacao para evolucao de contratos:
+Recomendação para evolução de contratos:
 
-- Alteracoes **breaking changes**: incrementar major.
-- Novos campos opcionais/nao quebrantes: incrementar minor.
-- Correcoes internas/documentacao: incrementar patch.
+- Alterações **breaking changes**: incrementar major.
+- Novos campos opcionais/não quebrantes: incrementar minor.
+- Correções internas/documentação: incrementar patch.
 
 ## Empacotamento
 
@@ -86,11 +86,11 @@ Gerar pacote local:
 dotnet pack .\ONGES.Contracts\ONGES.Contracts.csproj -c Release
 ```
 
-Saida esperada:
+Saída esperada:
 
-- `.\ONGES.Contracts\bin\Release\ONGES.Contracts.<versao>.nupkg`
+- `.\ONGES.Contracts\bin\Release\ONGES.Contracts.<versão>.nupkg`
 
-## Observacoes
+## Observações
 
-- Evite incluir regras de negocio neste projeto; mantenha apenas contratos.
-- Sempre alinhe mudancas de DTO com todos os produtores e consumidores antes de publicar nova versao.
+- Evite incluir regras de negócio neste projeto; mantenha apenas contratos.
+- Sempre alinhe mudanças de DTO com todos os produtores e consumidores antes de publicar nova versão.
